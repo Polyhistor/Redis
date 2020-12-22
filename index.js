@@ -1,21 +1,12 @@
 import Redis from "ioredis"
+import Strings from "./strings"
+import Hashes from "./hashes"
 
-// redis config with password
+// redis driver with password
 const redis = new Redis({password: 'kilkil123'});
 
 // strings
-redis.set('name', 'pouya', 'Ex', 5); 
-redis.get('name', (err, result)=>{
-    console.log(result)
-})
+Strings(redis);
 
-redis.get('country', (err, result)=>{
-    console.log(result)
-})
-
-redis.incrby('number', 200)
-redis.get('number', (err,result)=> {
-    console.log(result)
-})
-
-redis.mset()
+// hashes
+Hashes(redis)
